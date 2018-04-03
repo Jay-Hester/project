@@ -36,6 +36,11 @@ view: products {
     type: number
     sql: ${TABLE}.retail_price ;;
   }
+  #YesNo dimension
+  dimension: is_expensive {
+    type: yesno
+    sql: ${retail_price} >= '150' ;;
+  }
 
   dimension: sku {
     type: string

@@ -8,7 +8,8 @@ include: "*.dashboard"
 
 datagroup: jay_project_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  # Set cache time to 4 hours
+  max_cache_age: "4 hours"
 }
 
 persist_with: jay_project_default_datagroup
@@ -30,16 +31,25 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  #Always Filter added.
+  always_filter: {
+    filters: {
+      field: id
+      value: "123"
+    }
+  }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
     relationship: many_to_one
+
   }
 
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
     relationship: many_to_one
+
   }
 
   join: products {
