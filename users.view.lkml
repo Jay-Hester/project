@@ -67,6 +67,45 @@ view: users {
     sql: ${TABLE}.state ;;
   }
 
+  #For the purpose of static maps.
+  dimension: region {  # Create a dimension called "region"
+    case: {            # Define a set of cases and the corresponding labels for those cases
+
+      # When the "state" dimension has a western state, label it "West"
+      when: {
+        sql: ${state} in ('WA','OR','CA','NV','UT','WY','ID','MT','CO','AK','HI') ;;
+        label: "West"
+      }
+
+      # When the "state" dimension has a southwestern state, label it "Southwest"
+      when: {
+        sql: ${state} in ('AZ','NM','TX','OK') ;;
+        label: "Southwest"
+      }
+
+      # When the "state" dimension has a midwestern state, label it "Midwest"
+      when: {
+        sql: ${state} in ('ND','SD','MN','IA','WI','MN','OH','IN','MO','NE','KS','MI','IL') ;;
+        label: "Midwest"
+      }
+
+      # When the "state" dimension has a northeastern state, label it "Northeast"
+      when: {
+        sql: ${state} in ('MD','DE','NJ','CT','RI','MA','NH','PA','NY','VT','ME','DC') ;;
+        label: "Northeast"
+      }
+
+      # When the "state" dimension has a southeastern state, label it "Southeast"
+      when: {
+        sql: ${state} in ('AR','LA','MS','AL','GA','FL','SC','NC','VA','TN','KY','WV') ;;
+        label: "Southeast"
+      }
+
+      # If none of the above conditions are satisfied, label it "Unknown"
+      else: "Unknown"
+    }
+  }
+
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.zip ;;
