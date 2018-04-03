@@ -73,31 +73,31 @@ view: users {
 
       # When the "state" dimension has a western state, label it "West"
       when: {
-        sql: ${state} in ('WA','OR','CA','NV','UT','WY','ID','MT','CO','AK','HI') ;;
+        sql: ${state} in ('Washington','Oregon','California','Nevada','Utah','Wyoming','Idaho','Montana','Colorado','Alaska','Hawaii') ;;
         label: "West"
       }
 
       # When the "state" dimension has a southwestern state, label it "Southwest"
       when: {
-        sql: ${state} in ('AZ','NM','TX','OK') ;;
+        sql: ${state} in ('Arizona','New Mexico','Texas','Oklahoma') ;;
         label: "Southwest"
       }
 
       # When the "state" dimension has a midwestern state, label it "Midwest"
       when: {
-        sql: ${state} in ('ND','SD','MN','IA','WI','MN','OH','IN','MO','NE','KS','MI','IL') ;;
+        sql: ${state} in ('North Dakota','South Dakota','Minnesota','Iowa','Wisconsin','Ohio','Indiana','Missouri','Nebraska','Kansas','Michigan','Illinois') ;;
         label: "Midwest"
       }
 
       # When the "state" dimension has a northeastern state, label it "Northeast"
       when: {
-        sql: ${state} in ('MD','DE','NJ','CT','RI','MA','NH','PA','NY','VT','ME','DC') ;;
+        sql: ${state} in ('Maryland','Delaware','New Jersey','Connecticut','Rhode Island','Massachusetts','New Hampshire','Pennsylvania','New York','VermonT','Maine','District of Columbia') ;;
         label: "Northeast"
       }
 
       # When the "state" dimension has a southeastern state, label it "Southeast"
       when: {
-        sql: ${state} in ('AR','LA','MS','AL','GA','FL','SC','NC','VA','TN','KY','WV') ;;
+        sql: ${state} in ('Arkansas','Louisiana','Mississippi','Alabama','Georgia','Florida','South Carolina','North Carolina','Virginia','Tennessee','Kentucky','WV') ;;
         label: "Southeast"
       }
 
