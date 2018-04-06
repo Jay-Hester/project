@@ -9,7 +9,7 @@ include: "*.dashboard"
 datagroup: jay_project_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   # Set cache time to 4 hours
-  max_cache_age: "4 hours"
+  max_cache_age: "5 hours"
 }
 
 persist_with: jay_project_default_datagroup
