@@ -5,12 +5,11 @@ include: "*.view"
 
 # include all the dashboards
 include: "*.dashboard"
-
 datagroup: jay_project_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   # Set cache time to 4 hours
-  max_cache_age: "5 hours"
-}
+  max_cache_age: "10 hours"
+  }
 
 persist_with: jay_project_default_datagroup
 
@@ -66,6 +65,10 @@ explore: order_items {
 }
 
 explore: orders {
+  access_filter: {
+    field: orders.status
+    user_attribute: test
+    }
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
